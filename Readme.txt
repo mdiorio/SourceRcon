@@ -6,6 +6,8 @@ This code works, more or less, but the sample program isn't too user-friendly. N
 
 Version History:
 
+1.1.1a	start in interactive mode with command line parameters (ip port pass)
+
 1.1.1	Switched from ASCII to UTF8 encoding (Thanks, Namolem)
 
 1.1.0 	Code cleanup, improved console program

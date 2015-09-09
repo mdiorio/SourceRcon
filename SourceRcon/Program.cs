@@ -21,37 +21,29 @@ namespace SourceRcon
 
             bool interactive;
 
-            if (args.Length > 0)
-            {
-                if (args.Length == 4)
+            interactive = false;
+            ipaddress = "127.0.0.1";
+            port = 27015;
+            password = null;
+            command = null;
+
+            if (args.Length > 0) {
+
+                if (args.Length == 3)
                 {
-                    interactive = false;
+                    interactive = true;
                     ipaddress = args[0];
                     port = int.Parse(args[1]);
                     password = args[2];
-                    command = args[3];
-                }
 
+
+                }
                 else
                 {
-                    Console.WriteLine("To use in interactive mode, use no parameters.");
-                    Console.WriteLine("Else use parameters in the form: ip port password command");
-                    Console.WriteLine("Enclose the command in \" marks if it is more than one word");
-                    Console.WriteLine("E.g. sourcercon 192.168.0.5 27015 testpass \"say Testing!\"");
                     return;
+
                 }
-            }
-            else
-            {
-                interactive = true;
-                Console.WriteLine("Enter IP Address:");
-                ipaddress = Console.ReadLine();
-                Console.WriteLine("Enter port:");
-                port = int.Parse(Console.ReadLine());
-                Console.WriteLine("Enter password:");
-                password = Console.ReadLine();
-                command = null;
-            }
+            } 
 
 			SourceRcon Sr = new SourceRcon();
 			Sr.Errors += new StringOutput(ErrorOutput);
@@ -87,12 +79,12 @@ namespace SourceRcon
 
 		static void ErrorOutput(string input)
 		{
-			Console.WriteLine("Error: {0}", input);
+			Console.WriteLine("{0}", input);
 		}
 
 		static void ConsoleOutput(string input)
 		{
-			Console.WriteLine("Console: {0}", input);
+			Console.WriteLine("{0}", input);
 		}
 
 	}
